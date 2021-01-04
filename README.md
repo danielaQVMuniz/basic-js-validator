@@ -1,2 +1,4 @@
 # basic-validation
-Very basic, light weight validation library
+
+baisc-validation is a light weight JavaScript library for simple value validation.
+
