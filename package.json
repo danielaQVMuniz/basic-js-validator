@@ -1,5 +1,5 @@
 {
-  "name": "@danielaqvmuniz/basic-validation",
+  "name": "basic-validation",
   "version": "1.0.0",
   "description": "Light weight JavaScript library for simple JSON validation.",
   "main": "index.js",
