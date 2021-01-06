@@ -2,4 +2,4 @@
 
 # basic-js-validator
 
-basic-validation is a light weight JavaScript library for simple JSON validation.
+basic-json-validator is a light weight JavaScript library for simple JSON validation.
