@@ -14,7 +14,7 @@ jobs:
           root: ~/project
           paths: .
 
-  upload_code_coverage:
+  upload_codecov:
     docker:
       - image: circleci/node:14.15.0
     steps:
@@ -45,12 +45,12 @@ workflows:
             tags:
               only: /.*/
       #Only when merged to master
-      - upload_code_coverage:
-        requires:
-          - build
-        filters:
-          branches:
-            only: master
+      - upload_codecov:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
       #On every new release
       - release_npm:
           requires:
