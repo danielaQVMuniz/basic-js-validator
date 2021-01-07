@@ -14,6 +14,15 @@ jobs:
           root: ~/project
           paths: .
 
+  upload_code_coverage:
+    docker:
+      - image: circleci/node:14.15.0
+    steps:
+      - checkout
+      - run:
+          name: Upload codecov reports
+          command: bash <(curl -s https://codecov.io/bash)
+
   release_npm:
     docker:
       - image: circleci/node:14.15.0
@@ -35,6 +44,10 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - upload_code_coverage:
+        filters:
+          tags:
+            only: /.*/
       #On every new release
       - release_npm:
           requires:
