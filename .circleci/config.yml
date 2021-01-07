@@ -44,10 +44,13 @@ workflows:
           filters:
             tags:
               only: /.*/
+      #Only when merged to master
       - upload_code_coverage:
+        requires:
+          - build
         filters:
-          tags:
-            only: /.*/
+          branches:
+            only: master
       #On every new release
       - release_npm:
           requires:
