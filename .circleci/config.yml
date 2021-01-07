@@ -32,9 +32,9 @@ workflows:
     jobs:
       # Every commit
       - build:
-        filters:
-          tags:
-            only: /.*/
+          filters:
+            tags:
+              only: /.*/
       #On every new release
       - release_npm:
           requires:
