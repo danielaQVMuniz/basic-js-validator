@@ -1,6 +1,6 @@
 {
   "name": "basic-json-validator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Light weight JavaScript library for simple JSON validation.",
   "main": "index.js",
   "jest": {
