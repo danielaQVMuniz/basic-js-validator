@@ -17,8 +17,12 @@ jobs:
           root: ~/project
           paths: .
 
-  codecov/upload:
-   file: coverage/lcov.info
+  upload_codecov:
+    docker:
+      - image: circleci/node:14.15.0
+    steps:
+      - codecov/upload:
+          file: coverage/lcov.info
 
   release_npm:
     docker:
@@ -42,7 +46,7 @@ workflows:
             tags:
               only: /.*/
       #Only when merged to master
-      - codecov/upload:
+      - upload_codecov:
           requires:
             - build
           filters:
