@@ -56,7 +56,6 @@ workflows:
       - release_npm:
           requires:
             - build
-            - upload_codecov
           filters:
             branches:
               ignore: /.*/
