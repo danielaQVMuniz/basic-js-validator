@@ -6,6 +6,7 @@ export const MOCK_NUMBER: number = 123
 export const MOCK_STRING: string = '123'
 export const MOCK_TRUE_BOOLEAN: boolean = true
 export const MOCK_UNDEFINED: undefined = undefined
+export const MOCK_EMAIL = 'email@mail.com'
 
 export const MOCK_ERROR_MESSAGE: string = 'Error Message'
 export const MOCK_REGEX: RegExp = /[0-9]/

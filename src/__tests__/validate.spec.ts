@@ -4,7 +4,7 @@ import {
   MOCK_ERROR_MESSAGE,
   MOCK_NUMBER,
   MOCK_STRING,
-} from '../mocks/mockValues'
+} from '../__mocks__/mockValues'
 
 describe('src/validate', () => {
   test('Should return error message when empty value is required', () => {

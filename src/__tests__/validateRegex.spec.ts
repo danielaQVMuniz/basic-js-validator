@@ -2,7 +2,7 @@ import {
   MOCK_ERROR_MESSAGE,
   MOCK_REGEX,
   MOCK_STRING,
-} from '../mocks/mockValues'
+} from '../__mocks__/mockValues'
 import { validateRegex } from '../validateRegex'
 
 describe('src/validateRegex', () => {
