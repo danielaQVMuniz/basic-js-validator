@@ -8,7 +8,7 @@ import {
   MOCK_STRING,
   MOCK_TRUE_BOOLEAN,
   MOCK_UNDEFINED,
-} from '../mocks/mockValues'
+} from '../__mocks__/mockValues'
 
 describe('src/isString', () => {
   test('Should return true when value is type string', () => {
