@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/danielaQVMuniz/basic-validation/compare/v1.0.5...v1.2.0) (2021-02-07)
+
+
+### Features
+
+* add isEmail validation ([#7](https://github.com/danielaQVMuniz/basic-validation/issues/7)) ([7ec99e2](https://github.com/danielaQVMuniz/basic-validation/commit/7ec99e2f398953cca6648e003bafafdde8588b38))
+* add isUrl function ([#8](https://github.com/danielaQVMuniz/basic-validation/issues/8)) ([83814af](https://github.com/danielaQVMuniz/basic-validation/commit/83814af760aa107a967dc0c4c1eb680d501f0936))
+* add validation functions ([#6](https://github.com/danielaQVMuniz/basic-validation/issues/6)) ([65ad482](https://github.com/danielaQVMuniz/basic-validation/commit/65ad48255c66472567ee440cc8c394833dce8da1))
+* update relase version ([6ec3711](https://github.com/danielaQVMuniz/basic-validation/commit/6ec3711025ef5a00ed64e94456bb041877aab556))
+
 ### [1.0.5](https://github.com/danielaQVMuniz/basic-validation/compare/v1.0.4...v1.0.5) (2021-01-07)
 
 
