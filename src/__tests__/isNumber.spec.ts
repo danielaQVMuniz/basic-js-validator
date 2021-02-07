@@ -8,7 +8,7 @@ import {
   MOCK_STRING,
   MOCK_TRUE_BOOLEAN,
   MOCK_UNDEFINED,
-} from './mockValues'
+} from '../mocks/mockValues'
 
 describe('src/isNumber', () => {
   test('Should return true when value is type number', () => {
