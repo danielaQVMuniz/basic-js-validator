@@ -37,7 +37,7 @@ export interface IErrorObj {
 }
 
 /**
- * Validate values and returns error message if any.
+ * Validate JSON against schema and returns object with invalid error messages.
  *
  * @param schema
  * @param jsonValue
