@@ -1,6 +1,6 @@
 {
   "name": "basic-json-validator",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Light weight JavaScript library for simple JSON validation.",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -9,7 +9,7 @@
     "verbose": true
   },
   "browser": {
-    "[basic-json-validator]": false   
+    "[basic-json-validator]": false
   },
   "scripts": {
     "deploy": "sh scripts/deploy.sh",
