@@ -19,6 +19,7 @@
     "deploy": "sh scripts/deploy.sh",
     "release": "standard-version",
     "test": "jest --watch --coverage",
+    "prebuild": "rm -rf dist",
     "build": "tsc"
   },
   "dependencies": {},
