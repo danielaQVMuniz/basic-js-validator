@@ -27,7 +27,7 @@ export interface ISchema {
   [x: string]: ISimpleSchema & ICustomSchema & IRegexSchema
 }
 
-interface IValidateSchema {
+export interface IValidateSchema {
   schema: ISchema
   jsonValue: any
 }

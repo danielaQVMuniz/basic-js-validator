@@ -1,4 +1,4 @@
-interface IValidateRegex {
+export interface IValidateRegex {
   errorMessage?: string
   name: string
   regex: RegExp

@@ -1,4 +1,4 @@
-interface IValidate<TData> {
+export interface IValidate<TData> {
   condition: (x: TData) => boolean
   errorMessage?: string
   name: string
