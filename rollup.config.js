@@ -1,35 +1,58 @@
-import dts from 'rollup-plugin-dts'
-import esbuild from 'rollup-plugin-esbuild'
+import path from 'path'
 
-const name = require('./package.json').main.replace(/\.js$/, '')
+import json from '@rollup/plugin-json'
+import resolve from '@rollup/plugin-node-resolve'
+import url from '@rollup/plugin-url'
+import glob from 'glob'
+import babel from 'rollup-plugin-babel'
+import external from 'rollup-plugin-peer-deps-external'
+import typescript from 'rollup-plugin-typescript2'
 
-const bundle = (config) => ({
-  ...config,
-  input: 'src/index.ts',
-  external: (id) => !/^[./]/.test(id),
-})
+const ROOT_DIRECTORY = 'src'
+const ROOT_FILE_PATH = `${ROOT_DIRECTORY}/index.ts`
+const INDEX_FILES = glob.sync(`${ROOT_DIRECTORY}/**/index.ts`)
 
-export default [
-  bundle({
-    plugins: [esbuild()],
-    output: [
-      {
-        file: `${name}.js`,
-        format: 'cjs',
-        sourcemap: true,
-      },
-      {
-        file: `${name}.mjs`,
-        format: 'es',
-        sourcemap: true,
-      },
-    ],
-  }),
-  bundle({
-    plugins: [dts()],
-    output: {
-      file: `${name}.d.ts`,
-      format: 'es',
-    },
-  }),
-]
+const input = INDEX_FILES.reduce((componentMap, currentPath) => {
+  const currentPathSplit = currentPath.split(path.sep)
+  const componentName =
+    currentPath === ROOT_FILE_PATH
+      ? 'index'
+      : currentPathSplit[currentPathSplit.length - 2]
+
+  if (!componentName) {
+    return componentMap
+  }
+
+  return {
+    ...componentMap,
+    [componentName]: currentPath,
+  }
+}, {})
+
+export default {
+  cache: false,
+  input,
+  output: {
+    dir: 'dist',
+    format: 'es',
+  },
+  plugins: [
+    external({
+      preferBuiltins: false,
+    }),
+    babel({
+      exclude: /node_modules/,
+      externalHelpers: true, // Exclude babel helpers.
+      plugins: ['external-helpers'],
+    }),
+    json(),
+    resolve({
+      moduleDirectories: ['src', 'node_modules'],
+    }),
+    typescript({
+      clean: true,
+      typescript: require('ttypescript'),
+    }),
+    url(),
+  ],
+}
