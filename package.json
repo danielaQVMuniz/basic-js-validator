@@ -60,5 +60,6 @@
   "bugs": {
     "url": "https://github.com/danielaQVMuniz/basic-validation/issues"
   },
-  "homepage": "https://github.com/danielaQVMuniz/basic-validation#readme"
+  "homepage": "https://github.com/danielaQVMuniz/basic-validation#readme",
+  "dependencies": {}
 }
