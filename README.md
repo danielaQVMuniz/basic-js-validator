@@ -44,7 +44,7 @@ const emailCustomSchema = {
 }
 ```
 
-##### Simple type validation
+#### Simple type validation
 
 ```
 const JSONObj = {
@@ -60,7 +60,7 @@ validateSchema({
 })
 ```
 
-##### Custom regex validation
+#### Custom regex validation
 ```
 validateSchema({
   jsonValue: JSON.stringify(JSONObj),
@@ -71,7 +71,7 @@ validateSchema({
 ```
 
 
-##### Custom callback validation
+#### Custom callback validation
 
 ```
 validateSchema({
@@ -82,14 +82,12 @@ validateSchema({
 })
 ```
 
-##### Formik Validation Example
+#### Formik Validation Example
 
 This library works very well with Formik.
-Define a schema for each value 
+Define a schema for each value. The function should return the error format `Formik` expects.
 
 ```
-
-
 const validateForm = (values) => {
   return validateSchema({
     jsonValue: JSON.stringify(values),
