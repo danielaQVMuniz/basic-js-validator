@@ -11,30 +11,42 @@ npm i basic-json-validator
 ## Usage
 
 Possible schema validation configurations:
+1. [Schema Definition](#schema-definition)
 1. [Simple Type validation](#simple-type-validation)
 2. [Custom Regex validation](#custom-regex-validation)
 3. [Custom Callback validation](#custom-callback-validation)
+4. [Formik Validation Example](#formik-validation-example)
 
 > The same schema could have multiple validation types for the different keys.
 
 This package offers few default test types to help with simple key validations. Those are: `string`, `number`, `boolean`, `url`, `email`
 
+#### Schema Definition
+Define rules for each field to be validated. 
+Type: `ISchema`
+Could use default library types, regex or a custom validation.
+
+```
+const emailSchema = {
+  errorMessage: 'Verify if email is valid',
+  isRequired: true,
+  type: 'email',
+}
+
+const emailRegexSchema = {
+  errorMessage: 'Email does not match',
+  regex: emailRegex,
+}
+
+const emailCustomSchema = {
+  customCallback: isEmail,
+  errorMessage: 'Email does not match',
+}
+```
+
 ##### Simple type validation
 
 ```
-const schema: ISchema = {
-  name: {
-    type: 'string',
-    errorMessage: 'Name is required',
-    isRequired: true
-  }
-  email: {
-    type: 'email',
-    errorMessage: 'Email is not valid',
-    isRequired: true
-  }
-}
-
 const JSONObj = {
   "name": "John Doe",
   "email": "mail@email.com"
@@ -42,26 +54,19 @@ const JSONObj = {
 
 validateSchema({
   jsonValue: JSON.stringify(JSONObj),
-  schema: schema,
+  schema: {
+    email: emailSchema
+  }
 })
 ```
 
 ##### Custom regex validation
 ```
-const schema: ISchema = {
-  email: {
-    errorMessage: 'Email does not match',
-    regex: emailRegex,
-  },
-  url: {
-    errorMessage: 'Url does not match',
-    regex: urlRegex,
-  }
-}
-
 validateSchema({
   jsonValue: JSON.stringify(JSONObj),
-  schema: schema,
+  schema: {
+    email: emailRegexSchema,
+  }
 })
 ```
 
@@ -69,25 +74,36 @@ validateSchema({
 ##### Custom callback validation
 
 ```
-const schema: ISchema = {
-  email: {
-    customCallback: (email: string) => {
-      return isEmail(email)
-    },
-    errorMessage: 'Email does not match',
-  },
-  url: {
-    customCallback: (url: string) => {
-      return isUrl(url) 
-    },
-    errorMessage: 'Url does not match',
-  }
-}
-
 validateSchema({
   jsonValue: JSON.stringify(JSONObj),
-  schema: schema,
+  schema: {
+    email: emailCustomSchema
+  },
 })
+```
+
+##### Formik Validation Example
+
+This library works very well with Formik.
+Define a schema for each value 
+
+```
+
+
+const validateForm = (values) => {
+  return validateSchema({
+    jsonValue: JSON.stringify(values),
+    schema: {
+      email: emailSchema
+    },
+  })
+}
+
+<Formik
+  initialValues={{ email: '' }}
+  onSubmit={handleSubmit}
+  validate={validateForm}
+>
 ```
 
 ## Getting involved
